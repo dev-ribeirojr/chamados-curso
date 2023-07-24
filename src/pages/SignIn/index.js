@@ -12,7 +12,7 @@ export default function SignIn() {
     password: ''
   })
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, loading } = useContext(AuthContext);
 
   function handleSignIn(e) {
     e.preventDefault();
@@ -48,7 +48,9 @@ export default function SignIn() {
             value={dadosLogin.password}
             onChange={(e) => atualizarInput('password', e)}
           />
-          <button type='submit'>Entrar</button>
+          <button type='submit'>{
+            loading ? 'Entrando...' : 'Entrar'
+          }</button>
 
         </form>
         <Link to='/register'>Cadastre-se</Link>
