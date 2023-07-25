@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 
 import { auth, db } from '../services/firebaseConection';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 import { useNavigate } from "react-router-dom";
@@ -9,14 +9,33 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
+  const localStorageKey = 'dadosUser';
 
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
+  // buscando se tem usuário logado e salvo no localStorage
+  useEffect(() => {
+    async function loadUser() {
+      const storageUser = JSON.parse(localStorage.getItem(localStorageKey));
+
+      if (storageUser) {
+        setUser(storageUser)
+        setLoading(false);
+      }
+      setLoading(false);
+    }
+    loadUser();
+
+  }, []);
+
+  // logando usuário e salvando no localStorage
+
   async function signIn(email, password) {
-    setLoading(true);
+    setLoadingAuth(true);
     await signInWithEmailAndPassword(auth, email, password)
       .then(async (value) => {
 
@@ -27,33 +46,36 @@ export default function AuthProvider({ children }) {
 
         let data = {
           uid: uid,
-          nome: docSnap.data().name,
+          nome: docSnap.data().nome,
           email: value.user.email,
           avatarUrl: docSnap.data().avatarUrl
         }
         setUser(data);
         storageUser(data)
-        setLoading(false);
-        navigate('/dashboard')
+        setLoadingAuth(false);
+        navigate('/dashboard');
       })
       .catch((error) => {
 
         if (error.code === 'auth/user-not-found') {
           alert('Não encontramos o seu cadastro em nosso banco de dados cadastre-se gratuitamente');
-          setLoading(false);
+          setLoadingAuth(false);
           return;
         }
         if (error.code === 'auth/wrong-password') {
-          alert('Senha incorreta')
-          setLoading(false);
+          alert('Senha incorreta');
+          setLoadingAuth(false);
           return;
         }
-        console.log(error)
+        setLoadingAuth(false)
+        console.log(error);
       })
   }
 
+  // cadastrando usuário e criando um doc para armazenar dados do usuário 
+
   async function signUp(name, email, password) {
-    setLoading(true);
+    setLoadingAuth(true);
     await createUserWithEmailAndPassword(auth, email, password)
       .then(async (value) => {
 
@@ -72,30 +94,43 @@ export default function AuthProvider({ children }) {
             }
             setUser(data);
             storageUser(data);
-            setLoading(false);
-            navigate('/dashboard')
+            setLoadingAuth(false);
+            navigate('/dashboard');
           })
       })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
-          alert('Este email já está em nosso banco de dados')
+          alert('Este email já está em nosso banco de dados');
+
+          setLoadingAuth(false);
+          return;
         }
         console.log(error);
-        setLoading(false);
+        setLoadingAuth(false);
       })
   }
 
+  // salvando dados do usuário no localStorage
   function storageUser(data) {
-    localStorage.setItem('@dadosUser', JSON.stringify(data))
+    localStorage.setItem(localStorageKey, JSON.stringify(data));
+  }
+
+  // deslogando usuário e removendo os dados do localStorage
+  async function logout() {
+    await signOut(auth);
+    localStorage.removeItem(localStorageKey);
+    setUser(null);
   }
 
   return (
     <AuthContext.Provider
       value={{
-        signed: !!user, //converte null para booleano
+        signed: !!user,
         user,
         signIn,
         signUp,
+        logout,
+        loadingAuth,
         loading,
       }}
     >

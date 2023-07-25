@@ -13,7 +13,7 @@ export default function SignUp() {
     password: '',
   })
 
-  const { signUp, loading } = useContext(AuthContext);
+  const { signUp, loadingAuth } = useContext(AuthContext);
 
   useEffect(() => {
     function darFocoInputt() {
@@ -66,7 +66,7 @@ export default function SignUp() {
             onChange={(e) => atualizarInput('password', e)}
           />
           <button type='submit'>
-            {loading ? 'Carregando...' : 'Cadastrar'
+            {loadingAuth ? 'Carregando...' : 'Cadastrar'
             }
           </button>
 

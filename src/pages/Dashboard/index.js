@@ -1,10 +1,25 @@
+import { useContext } from "react";
+import './dashboard.css';
+import { AuthContext } from "../../contexts/auth";
 
-
+import Header from "../../components/Header";
 
 export default function Dashboard() {
+
+  const { logout } = useContext(AuthContext);
+
+  async function handleLogout() {
+    await logout();
+  }
+
   return (
-    <section>
-      Dashboard
+    <section className="dashboard" >
+      <Header />
+      <section className="main">
+        <button onClick={handleLogout}>
+          Sair Da conta
+        </button>
+      </section>
     </section>
   )
 }

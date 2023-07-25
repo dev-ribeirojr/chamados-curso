@@ -12,12 +12,14 @@ export default function SignIn() {
     password: ''
   })
 
-  const { signIn, loading } = useContext(AuthContext);
+  const { signIn, loadingAuth } = useContext(AuthContext);
 
-  function handleSignIn(e) {
+  async function handleSignIn(e) {
     e.preventDefault();
     if (dadosLogin.email !== '' && dadosLogin.password !== '') {
-      signIn(dadosLogin.email, dadosLogin.password);
+
+      await signIn(dadosLogin.email, dadosLogin.password);
+
       setDadosLogin({ email: '', password: '' });
     } else {
       alert('preencha os campos');
@@ -47,9 +49,10 @@ export default function SignIn() {
             placeholder='******'
             value={dadosLogin.password}
             onChange={(e) => atualizarInput('password', e)}
+            autoComplete='on'
           />
           <button type='submit'>{
-            loading ? 'Entrando...' : 'Entrar'
+            loadingAuth ? 'Entrando...' : 'Entrar'
           }</button>
 
         </form>
