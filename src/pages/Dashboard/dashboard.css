@@ -10,10 +10,147 @@
   padding: 20px;
 }
 
+.new {
+  margin-left: 220px;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px 20px 0;
+}
+
+.new a {
+  background-color: #83bf02;
+
+  padding: 0.5rem;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-weight: 600;
+  color: #FFF;
+
+  transition: ease-in-out 0.5s;
+
+}
+
+.new a:hover {
+  background-color: #5fd204;
+  transform: scale(1.1);
+}
+
+
+table {
+  margin: 0 20px 20px 220px;
+  box-shadow: 3px 3px 8px #1212125b;
+
+  width: calc(100% - 240px);
+
+  border: 1px solid #ccc;
+
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #DDD;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.60em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+table td .action {
+  border: 0;
+  padding: 5px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 3px;
+
+}
+
+table td .action svg {
+  vertical-align: middle;
+}
+
+table td .action:hover {
+  opacity: 0.8;
+}
+
+table td .badge {
+  padding: 3px;
+  border-radius: 3px;
+  color: #FFF;
+}
+
+
 @media screen and (max-width: 700px) {
+  table {
+    border: 0;
+    box-shadow: none;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #DDD;
+    display: block;
+    margin-bottom: 0.60em;
+  }
+
+  table td {
+    border-bottom: 1px solid #DDD;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
   .content {
     padding-top: 70px;
     margin-left: 0;
+  }
+
+  table {
+    margin: 0 20px;
+    width: calc(100% - 40px);
   }
 }
 

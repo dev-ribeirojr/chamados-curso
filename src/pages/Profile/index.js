@@ -100,33 +100,32 @@ export default function Profile() {
           <FiSettings size={25} />
 
         </Title>
+      </section>
+      <section className="container">
+        <form className="form-perfil" onSubmit={handleSubmit}>
+          <label className="label-avatar">
+            <span>
+              <FiUpload color="#FFF" size={25} />
+            </span>
+            <input type="file" accept="image/*" onChange={handleFile} />
+            {avatarUrl === null ? (
+              <img src={avatar} alt='Foto de Perfil' width={200} heigth={200} />
+            ) : (
+              <img src={avatarUrl} alt='Foto de Perfil' width={200} heigth={200} />
+            )}
+          </label>
 
-        <section className="container">
-          <form className="form-perfil" onSubmit={handleSubmit}>
-            <label className="label-avatar">
-              <span>
-                <FiUpload color="#FFF" size={25} />
-              </span>
-              <input type="file" accept="image/*" onChange={handleFile} />
-              {avatarUrl === null ? (
-                <img src={avatar} alt='Foto de Perfil' width={200} heigth={200} />
-              ) : (
-                <img src={avatarUrl} alt='Foto de Perfil' width={200} heigth={200} />
-              )}
-            </label>
+          <label>Nome</label>
+          <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
 
-            <label>Nome</label>
-            <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
+          <label>Email</label>
+          <input type="text" value={user.email} disabled={true} />
 
-            <label>Email</label>
-            <input type="text" value={user.email} disabled={true} />
-
-            <button type="submit"> Salvar</button>
-          </form>
-        </section>
-        <section className="container">
-          <button className="logout-btn" onClick={() => logout()}> Sair</button>
-        </section>
+          <button type="submit"> Salvar</button>
+        </form>
+      </section>
+      <section className="container">
+        <button className="logout-btn" onClick={() => logout()}> Sair</button>
       </section>
     </section>
   )

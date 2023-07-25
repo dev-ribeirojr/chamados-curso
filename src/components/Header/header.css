@@ -41,7 +41,8 @@
 
 }
 
-.navegacao a {
+.navegacao a,
+.header-btn-sair {
   padding: 1rem;
 
   display: flex;
@@ -56,7 +57,16 @@
   background-color: #121212;
 }
 
-@media screen and (max-width: 700px) {
+.navegacao .header-btn-sair:hover {
+  background-color: #dc3545;
+}
+
+.header-btn-sair {
+  background-color: #181c2e;
+}
+
+
+@media screen and (max-width: 768px) {
 
   .sidebar {
     width: 100%;

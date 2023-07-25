@@ -5,11 +5,11 @@ import avatarImg from '../../assets/avatar.png';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth';
 
-import { FiHome, FiUser, FiSettings } from 'react-icons/fi';
+import { FiHome, FiUser, FiSettings, FiLogOut } from 'react-icons/fi';
 
 export default function Header() {
 
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <header className="sidebar">
@@ -22,7 +22,7 @@ export default function Header() {
           <FiHome color='#FFF' size={24} />
           Chamados
         </Link>
-        <Link to='/dashboard'>
+        <Link to='/customers'>
           <FiUser color='#FFF' size={24} />
           Clientes
         </Link>
@@ -30,6 +30,10 @@ export default function Header() {
           <FiSettings color='#FFF' size={24} />
           Perfil
         </Link>
+        <button className='header-btn-sair' onClick={() => logout()}>
+          <FiLogOut color='#FFF' size={24} />
+          Sair
+        </button>
       </nav>
     </header>
   )

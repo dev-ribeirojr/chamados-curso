@@ -9,6 +9,8 @@ import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
 
 import Profile from "../pages/Profile";
+import Customers from "../pages/Customers";
+import New from "../pages/New";
 
 export default function RoutesApp() {
 
@@ -17,7 +19,9 @@ export default function RoutesApp() {
       <Route path="/" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
 
+      <Route path="/new" element={<Private> <New /> </Private>} />
       <Route path="/profile" element={<Private> <Profile /> </Private>} />
+      <Route path="/customers" element={<Private> <Customers /> </Private>} />
       <Route path="/dashboard" element={<Private> <Dashboard /> </Private>} />
 
       <Route path="*" element={<NotFound />} />

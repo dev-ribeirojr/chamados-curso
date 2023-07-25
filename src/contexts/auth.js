@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from "react";
 
 import { auth, db } from '../services/firebaseConection';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, collection, query, onSnapshot } from 'firebase/firestore';
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [customersExist, setCustomersExist] = useState([]);
 
   const navigate = useNavigate();
 
@@ -31,6 +32,29 @@ export default function AuthProvider({ children }) {
     loadUser();
 
   }, []);
+
+  useEffect(() => {
+    async function handleSearchCustomers() {
+      const docRef = collection(db, 'customers');
+      const q = query(docRef)
+
+      const customers = onSnapshot(q, (snapshot) => {
+        let list = [];
+        snapshot.forEach((doc => {
+          list.push({
+            id: doc.id,
+            nomeFantasia: doc.data().nomeFantasia,
+            cnpj: doc.data().cnpj
+          })
+        }))
+        setCustomersExist(list);
+      })
+    }
+
+    handleSearchCustomers();
+
+  }, [])
+
 
   // logando usuário e salvando no localStorage
 
@@ -134,6 +158,7 @@ export default function AuthProvider({ children }) {
         storageUser,
         loadingAuth,
         loading,
+        customersExist,
       }}
     >
       {children}

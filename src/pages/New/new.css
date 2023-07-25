@@ -1,0 +1,49 @@
+form textarea {
+  resize: none;
+  height: 105px;
+}
+
+form input[type="radio"] {
+  margin: 15px 0;
+  box-shadow: none;
+}
+
+form input[type="radio"]:not(:first-child) {
+  margin-left: 15px;
+}
+
+.area-clientes-zero {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.area-clientes-zero a {
+  background-color: #181c2e;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: #FFF;
+  display: inline-block;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: flex-end;
+  text-align: center;
+
+  transition: ease-in-out 0.5s;
+}
+
+.area-clientes-zero a:hover {
+  background-color: #121212;
+}
+
+.status span {
+  padding-left: 0.5em;
+  font-size: 1.1em;
+}
+
+.status {
+  margin-bottom: 1em;
+}
