@@ -15,7 +15,7 @@ export default function Dashboard() {
   return (
     <section className="dashboard" >
       <Header />
-      <section className="main">
+      <section className="content">
         <button onClick={handleLogout}>
           Sair Da conta
         </button>

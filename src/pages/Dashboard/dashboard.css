@@ -4,3 +4,21 @@
   background-color: aliceblue;
   margin-left: 250px;
 }
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .content {
+    padding-top: 70px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .content {
+    padding-top: 180px;
+  }
+}

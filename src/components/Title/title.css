@@ -1,0 +1,14 @@
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  background-color: #F8f8f8;
+  padding: 0.8rem;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px #1212124d;
+}
+
+.title span {
+  font-size: 1.5em;
+}

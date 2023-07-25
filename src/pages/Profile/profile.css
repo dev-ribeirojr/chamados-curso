@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  padding: 0.8em;
+  align-items: center;
+  margin: 1rem 0;
+
+  box-shadow: 3px 3px 8px #1212126c;
+}
+
+.label-avatar {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  border-radius: 50%;
+}
+
+.label-avatar input {
+  display: none;
+}
+
+.label-avatar span {
+  z-index: 99;
+  position: absolute;
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+
+.label-avatar:hover span {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.form-perfil {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-perfil img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+.form-perfil label {
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+}
+
+.form-perfil input,
+textarea,
+select {
+  margin-bottom: 1em;
+  padding: 0.7em;
+  border-radius: 5px;
+  max-width: 600px;
+  box-shadow: inset 0 0 5px #12121252;
+}
+
+.form-perfil input:disabled {
+  cursor: not-allowed;
+}
+
+.form-perfil button {
+  max-width: 600px;
+  font-size: 1.5em;
+  padding: 4px 0;
+  border-radius: 5px;
+  margin-top: 1em;
+  background-color: #181c2e;
+  color: #fff;
+
+  transition: all 0.5s;
+}
+
+.form-perfil button:hover {
+  background-color: #121212;
+}
+
+.logout-btn {
+  padding: 4px 20px;
+  border: 1px solid #121212;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 1.5em;
+
+  transition: all 0.5s;
+}
+
+.logout-btn:hover {
+  background-color: #121212;
+  color: #fff;
+}

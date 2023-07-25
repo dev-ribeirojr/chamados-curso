@@ -26,7 +26,7 @@ export default function Header() {
           <FiUser color='#FFF' size={24} />
           Clientes
         </Link>
-        <Link to='/dashboard'>
+        <Link to='/profile'>
           <FiSettings color='#FFF' size={24} />
           Perfil
         </Link>
