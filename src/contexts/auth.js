@@ -50,9 +50,7 @@ export default function AuthProvider({ children }) {
         setCustomersExist(list);
       })
     }
-
     handleSearchCustomers();
-
   }, [])
 
 

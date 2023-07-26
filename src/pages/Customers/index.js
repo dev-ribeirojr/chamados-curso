@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-import './customers.css';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
