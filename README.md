@@ -2,11 +2,13 @@
 <p align='center'>
   <img src='./src/assets/readme/login.png' alt='página login' style= "width:320px" />
   <img src='./src/assets/readme/cadastro.png' alt='página login' style= "width:320px" />
+</p>
+<p align='center'>
   <img src='./src/assets/readme/dashboard.png' alt='página login' style= "width:320px" />
+  <img src='./src/assets/readme/detalhes.png' alt='página login' style= "width:320px" />
 </p>
   
 <p align='center'>
-  <img src='./src/assets/readme/detalhes.png' alt='página login' style= "width:320px" />
   <img src='./src/assets/readme/novo-chamado.png' alt='página login' style= "width:320px" />
   <img src='./src/assets/readme/editando-chamado.png' alt='página login' style= "width:320px" />
 </p>
@@ -18,6 +20,9 @@
 <p align='center'>
   <img src='./src/assets/readme/perfil-responsive.png' alt='página login' style= "height: 305px" />
   <img src='./src/assets/readme/chamados-responsive.png' alt='página login' style= "height: 305px" />
+  
+</p>
+<p align='center'>
   <img src='./src/assets/readme/novo-chamado-responsive.png' alt='página login' style= "height: 305px" />
   <img src='./src/assets/readme/cadastro-clientes-responsive.png' alt='página login' style= "height: 305px" />
 </p>
