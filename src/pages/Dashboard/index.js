@@ -12,6 +12,7 @@ import { db } from "../../services/firebaseConection";
 import { collection, getDocs, orderBy, limit, startAfter, query } from "firebase/firestore";
 
 import { format } from "date-fns";
+import Modal from "../../components/Modal";
 
 const listRef = collection(db, "chamados");
 
@@ -24,6 +25,8 @@ export default function Dashboard() {
 
   const [lastDoc, setLastDoc] = useState();
   const [loadingMore, setLoadingMore] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [detail, setDetail] = useState();
 
   useEffect(() => {
     async function loadChamados() {
@@ -74,6 +77,10 @@ export default function Dashboard() {
     }
 
     setLoadingMore(false);
+  }
+  function handleDetail(chamado) {
+    setShowPostModal(!showPostModal);
+    setDetail(chamado);
   }
 
   async function handleLogout() {
@@ -150,6 +157,7 @@ export default function Dashboard() {
                       <td data-label='Cadastrado'>{chamado.createdFormat}</td>
                       <td data-label='#'>
                         <button
+                          onClick={() => handleDetail(chamado)}
                           className="action"
                           style={{ backgroundColor: '#3583f6' }}
                         >
@@ -177,6 +185,12 @@ export default function Dashboard() {
               </section>
             </>
           )
+      }
+      {showPostModal &&
+        <Modal
+          detail={detail}
+          handleClose={() => setShowPostModal(!showPostModal)}
+        />
       }
     </section>
   )

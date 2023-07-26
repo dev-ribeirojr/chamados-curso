@@ -121,6 +121,7 @@ table td .badge {
 }
 
 .btn-more:hover {
+  transform: scale(1.1);
   background-color: #121212;
 }
 
