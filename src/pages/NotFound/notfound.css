@@ -1,0 +1,40 @@
+.not {
+  background-color: #121212;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found {
+  align-items: center;
+}
+
+.not-found h1 {
+  color: #FFF;
+  font-size: 7em;
+}
+
+.container-not {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.conent-not {
+  background-color: #fff;
+  padding: 1em;
+}
+
+
+.conent-not p {
+  margin-bottom: 1em;
+  font-size: 1.1em;
+}
+
+.conent-not a {
+  background-color: #181c2e;
+  color: #FFF;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
