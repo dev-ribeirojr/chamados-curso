@@ -1,4 +1,4 @@
-# Projeto de Chamados
+# Sistema de Chamados
 <p align='center'>
   <img src='./src/assets/readme/login.png' alt='página login' style= "width:320px" />
   <img src='./src/assets/readme/cadastro.png' alt='página login' style= "width:320px" />
